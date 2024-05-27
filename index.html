@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predikat Kelulusan Siswa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Predikat Kelulusan Siswa</h1>
+        <form id="formKelulusan">
+            <label for="nama">Nama Siswa:</label>
+            <input type="text" id="nama" name="nama" required>
+
+            <label for="kelas">Kelas:</label>
+            <input type="text" id="kelas" name="kelas" required>
+
+            <label for="jurusan">Jurusan:</label>
+            <select id="jurusan" name="jurusan" required>
+                <option value="RPL">RPL</option>
+                <option value="TKJ">TKJ</option>
+                <option value="Multimedia">Multimedia</option>
+                <option value="PKM">PKM</option>
+                <option value="OTKP">OTKP</option>
+            </select>
+
+            <label for="nilai">Nilai:</label>
+            <input type="number" id="nilai" name="nilai" required>
+
+            <button type="button" onclick="cekKelulusan()">Cek Kelulusan</button>
+        </form>
+        <div id="hasil">
+            <h2>Hasil</h2>
+            <p id="outputNama"></p>
+            <p id="outputKelas"></p>
+            <p id="outputJurusan"></p>
+            <p id="outputNilai"></p>
+            <p id="outputPredikat"></p>
+        </div>
+    </div>
+
+    <script>
+        function cekKelulusan() {
+            const nama = document.getElementById('nama').value;
+            const kelas = document.getElementById('kelas').value;
+            const jurusan = document.getElementById('jurusan').value;
+            const nilai = document.getElementById('nilai').value;
+            const hasilDiv = document.getElementById('hasil');
+            const outputNama = document.getElementById('outputNama');
+            const outputKelas = document.getElementById('outputKelas');
+            const outputJurusan = document.getElementById('outputJurusan');
+            const outputNilai = document.getElementById('outputNilai');
+            const outputPredikat = document.getElementById('outputPredikat');
+
+            outputNama.textContent = `Nama: ${nama}`;
+            outputKelas.textContent = `Kelas: ${kelas}`;
+            outputJurusan.textContent = `Jurusan: ${jurusan}`;
+            outputNilai.textContent = `Nilai: ${nilai}`;
+
+            if (nilai >= 75) {
+                outputPredikat.textContent = 'Predikat: Lulus';
+                outputPredikat.style.color = 'green';
+            } else {
+                outputPredikat.textContent = 'Predikat: Tidak Lulus';
+                outputPredikat.style.color = 'red';
+            }
+
+            hasilDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
